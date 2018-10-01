@@ -1,5 +1,5 @@
 # noDaysOff-Calendar
-a Jerry Seinfeld-inspired calendar script that shows 'chains' of activity as a way to encourage regular practice of an activity. written in python 3, images are generated in pip. Eventually geektools may be used to put it on the desktop.
+a Jerry Seinfeld-inspired calendar script that shows 'chains' of activity as a way to encourage regular practice of an activity. written in python 3, images are generated with pil. Eventually geektools may be used to put it on the desktop.
 
 
 How it looks currently: 
