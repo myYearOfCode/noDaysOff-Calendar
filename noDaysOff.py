@@ -136,7 +136,8 @@ if file_found:
 	#this file found loop needed so we don't write this stuff 365 times.
     dr.text( (0,12*box_size),"DAYS WORKED: "+str(days_worked),(255,255,255),font=fnt2)
     dr.text( (0,12*box_size+45),"HOURS WORKED: "+str(hours_worked),(255,255,255),font=fnt2)
-    dr.text( (0,12*box_size+90),"LONGEST STREAK: "+str(longest_streak),(255,255,255),font=fnt2)
+    dr.text( (0,12*box_size+90),"AVG HOURS/DAY: "+str(hours_worked/days_worked),(255,255,255),font=fnt2)
+    dr.text( (0,12*box_size+135),"LONGEST STREAK: "+str(longest_streak),(255,255,255),font=fnt2)
     print (os.path.dirname(sys.argv[0])+jpg_path+datetime.datetime.today().strftime('%Y-%m-%d')+".jpg")
     im.save(os.path.dirname(sys.argv[0])+datetime.datetime.today().strftime('%Y-%m-%d')+".jpg")
     im.show()
