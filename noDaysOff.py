@@ -137,7 +137,8 @@ if file_found:
     dr.text( (0,12*box_size),"DAYS WORKED: "+str(days_worked),(255,255,255),font=fnt2)
     dr.text( (0,12*box_size+45),"HOURS WORKED: "+str(hours_worked),(255,255,255),font=fnt2)
     dr.text( (0,12*box_size+90),"LONGEST STREAK: "+str(longest_streak),(255,255,255),font=fnt2)
-    im.save(jpg_path)
+    print (os.path.dirname(sys.argv[0])+jpg_path+datetime.datetime.today().strftime('%Y-%m-%d')+".jpg")
+    im.save(os.path.dirname(sys.argv[0])+datetime.datetime.today().strftime('%Y-%m-%d')+".jpg")
     im.show()
 
 if not file_found:
