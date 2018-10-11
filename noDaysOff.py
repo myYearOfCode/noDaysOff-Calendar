@@ -3,6 +3,19 @@
 This script will make and update a noDaysOff calendar. This is a calendar app 
 designed to keep you doing things day after day simply because you dont 
 want to break a streak.
+BRANCH TODO
+
+    github visualization for 100DoC
+    7*15 bar
+    ideally colors ramp up over time dark, then brighter, then brighter still.
+    possibly do heatmap alternative
+
+    optional total hours / avg hours stats.
+    optional BIG number on right hand side, overlaid.
+
+branch TO FIX
+missing first day currently. needs better testing on start days and flowing properly
+how to handle more than 100 days?
 
 TO DO 
 //fix weekend code. its off by a day.
