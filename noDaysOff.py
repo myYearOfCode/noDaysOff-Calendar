@@ -56,6 +56,7 @@ hours_worked=0
 current_streak=0
 longest_streak=0
 start_day=7
+start_week=math.floor(start_day/7)
 box_size=int((width/15))
 fill_color="black"
 weekend_work="rgb(255,0,0)"
@@ -111,33 +112,37 @@ for month in range(1,13):
             day_data=(csvFileArray[calc_day(year,month,day)-1]) #
             if day_data[1]!='None': # you worked
                 #detect weekend
-                if datetime.datetime.weekday(datetime_object) in [5,6]: 
-                    fill_color=weekend_work
-                    days_worked+=1
+                # if datetime.datetime.weekday(datetime_object) in [5,6]: 
+                #     fill_color=weekend_work
+                #     days_worked+=1
                    
-                else: # no weekend 
-                    fill_color=weekday_work
-                    days_worked+=1
+                # else: # no weekend 
+                fill_color=weekday_work
+                days_worked+=1
                 hours_worked+=float(day_data[1])
                 current_streak+=1
             else: # you didnt work
-                if datetime.datetime.weekday(datetime_object) in [5,6]: #detect weekend
-                    fill_color=weekend_rest #change box color for weekend.				
-                else: # no weekend
-                    fill_color=weekday_rest #change box color for weekday.				
+                # if datetime.datetime.weekday(datetime_object) in [5,6]: #detect weekend
+                #     fill_color=weekend_rest #change box color for weekend.				
+                # else: # no weekend
+                fill_color=weekday_rest #change box color for weekday.				
                 current_streak=0
 
             # Draw today's box
             # dr.rectangle(  (( (day-1)*box_size , (month-1)*box_size ) , (  ((day-1)*box_size)+box_size  , month*box_size  )) , fill=fill_color, outline = "white")
             day_number=calc_day(year,month,day)
+
             if ( day_number >= start_day and day_number < start_day+100):
                 # Draw today's box
-                week_number=math.floor((day_number-start_day)/7)
+                week_number=math.floor((day_number)/7)-start_week
+
                 day_of_week=datetime.datetime.weekday(datetime_object)+1
-                dr.rectangle(  (( (week_number-1)*box_size , (day_of_week-1)*box_size ),
-                                 ( ((week_number)*box_size) , (day_of_week)*box_size  )) , fill=fill_color, outline = "white")
-                dr.text( ((week_number-1)*box_size,(day_of_week-1)*box_size),str(week_number),(255,255,255,10),font=fnt3)
-                dr.text( ((week_number-1)*box_size,(day_of_week-1.5)*box_size),str(day_number),(255,255,255,10),font=fnt3)
+                if (day_of_week == 7):
+                    week_number-=1
+                dr.rectangle(  (( (week_number)*box_size , (day_of_week-1)*box_size ),
+                                 ( ((week_number+1)*box_size) , (day_of_week)*box_size  )) , fill=fill_color, outline = "white")
+                dr.text( ((week_number)*box_size,(day_of_week-1)*box_size),str(day_of_week),(255,255,255,10),font=fnt3)
+                dr.text( ((week_number+.6)*box_size,(day_of_week-.5)*box_size),str(day_number),(255,255,255,10),font=fnt3)
                 # if day_data[1]!='None':
                     #write hours worked in today's box
                     # dr.text( ((week_number-1)*box_size,(day_of_week-1)*box_size),str(day_data[1]),(255,255,255,10),font=fnt3)
